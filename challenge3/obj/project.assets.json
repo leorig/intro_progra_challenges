@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Leo\\Desktop\\Work\\intro_progra\\Challenge\\challenge2\\challenge22.csproj",
-      "projectName": "challenge22",
-      "projectPath": "C:\\Users\\Leo\\Desktop\\Work\\intro_progra\\Challenge\\challenge2\\challenge22.csproj",
+      "projectUniqueName": "C:\\Users\\Leo\\Desktop\\Work\\intro_progra\\Challenge\\challenge3\\challenge3.csproj",
+      "projectName": "challenge3",
+      "projectPath": "C:\\Users\\Leo\\Desktop\\Work\\intro_progra\\Challenge\\challenge3\\challenge3.csproj",
       "packagesPath": "C:\\Users\\Leo\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Leo\\Desktop\\Work\\intro_progra\\Challenge\\challenge2\\obj\\",
+      "outputPath": "C:\\Users\\Leo\\Desktop\\Work\\intro_progra\\Challenge\\challenge3\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Leo\\AppData\\Roaming\\NuGet\\NuGet.Config"
