@@ -1,8 +1,5 @@
 ﻿using System;
-using System.IO;
-using System.Collections.Generic;  
-using System.Linq;  
-using System.Text;  
+using System.IO; 
 using System.Text.RegularExpressions;
 using System.Globalization;
 
@@ -47,7 +44,7 @@ abstract class Shape//this abstract Shape class is our base class to inherit fro
         public override double GetSides()
         {
             double readoutput=0;
-            string pattern = @"^[Rr]ectangle,-?\d+(?:\.\d+)?,-?\d+(?:\.\d+)?";
+            string pattern = @"^[Rr]ectangle,";
             Regex rg = new Regex(pattern);
             //creating an object of NumberFormatInfo
             NumberFormatInfo provider = new NumberFormatInfo();
@@ -55,7 +52,7 @@ abstract class Shape//this abstract Shape class is our base class to inherit fro
             try {
                 // Create an instance of StreamReader to read from a file.
                 // The using statement also closes the StreamReader.
-                using (StreamReader sr = new StreamReader("test.txt")) {
+                using (StreamReader sr = new StreamReader("input.txt")) {
                     string line;
                 // Read and display lines from the file until 
                 // the end of the file is reached. 
@@ -64,17 +61,20 @@ abstract class Shape//this abstract Shape class is our base class to inherit fro
                             Console.WriteLine(line);
                             try
                             {
+                                //try for variables with floating points. Only accepts the same type of variables.
+                                //rectangle,12.3,12.4 
                                 string [] sides = Regex.Split(line, @"(^[rR]ectangle),([\d]+\.[\d]+),([\d]+\.[\d]+)");
                                 this.side1 = Double.Parse(sides[2], System.Globalization.CultureInfo.InvariantCulture);   
                                 this.side2 = Double.Parse(sides[3], System.Globalization.CultureInfo.InvariantCulture);
                             }
                             catch
                             {
+                                //or rectangle,12,13
                                 string [] sides = Regex.Split(line, @"(^[rR]ectangle),([\d]+),([\d]+)");
                                 this.side1 = Double.Parse(sides[2], System.Globalization.CultureInfo.InvariantCulture);   
                                 this.side2 = Double.Parse(sides[3], System.Globalization.CultureInfo.InvariantCulture);
                             }
-                        }                     
+                        }                    
                     }
                 }
             } 
@@ -114,7 +114,7 @@ abstract class Shape//this abstract Shape class is our base class to inherit fro
         public override double GetSides()
         {
             double readoutput=0;
-            string pattern = @"^[Tt]riangle,-?\d+(?:\.\d+)?,-?\d+(?:\.\d+)?,-?\d+(?:\.\d+)?";
+            string pattern = @"^[Tt]riangle,";
             Regex rg = new Regex(pattern);
             //creating an object of NumberFormatInfo
             NumberFormatInfo provider = new NumberFormatInfo();
@@ -122,9 +122,8 @@ abstract class Shape//this abstract Shape class is our base class to inherit fro
             try {
                 // Create an instance of StreamReader to read from a file.
                 // The using statement also closes the StreamReader.
-                using (StreamReader sr = new StreamReader("test.txt")) {
+                using (StreamReader sr = new StreamReader("input.txt")) {
                     string line;
-                    //Console.WriteLine("ici");
                 // Read and display lines from the file until 
                 // the end of the file is reached. 
                     while ((line = sr.ReadLine()) != null) {
@@ -132,6 +131,7 @@ abstract class Shape//this abstract Shape class is our base class to inherit fro
                             Console.WriteLine(line);
                             try
                             {
+                                //try for variables with floating points
                                 string [] sides = Regex.Split(line, @"(^[Tt]riangle),([\d]+\.[\d]+),([\d]+\.[\d]+),([\d]+\.[\d]+)");
                                 this.tside1 = Double.Parse(sides[2], System.Globalization.CultureInfo.InvariantCulture);   
                                 this.tside2 = Double.Parse(sides[3], System.Globalization.CultureInfo.InvariantCulture);
@@ -144,7 +144,6 @@ abstract class Shape//this abstract Shape class is our base class to inherit fro
                                 this.tside2 = Double.Parse(sides[3], System.Globalization.CultureInfo.InvariantCulture);
                                 this.tside3 = Double.Parse(sides[4], System.Globalization.CultureInfo.InvariantCulture);
                             }
-  
                         }                     
                     }
                 }
@@ -167,7 +166,7 @@ abstract class Shape//this abstract Shape class is our base class to inherit fro
         {
             this.radius = r;
         }
-        public override double CalculateArea()
+        public override double CalculateArea() 
         {
             double area = (double)(Math.Pow(this.radius, 2) * Math.PI);
             return area;
@@ -188,7 +187,7 @@ abstract class Shape//this abstract Shape class is our base class to inherit fro
             try {
                 // Create an instance of StreamReader to read from a file.
                 // The using statement also closes the StreamReader.
-                using (StreamReader sr = new StreamReader("test.txt")) {
+                using (StreamReader sr = new StreamReader("input.txt")) {
                     string line;
                 // Read and display lines from the file until 
                 // the end of the file is reached. 
@@ -197,6 +196,7 @@ abstract class Shape//this abstract Shape class is our base class to inherit fro
                             Console.WriteLine(line);
                             try
                             {
+                                //try for variables with floating points
                                 string [] sides = Regex.Split(line, @"(^[Cc]ircle),([\d]+\.[\d]+)");
                                 this.radius = Double.Parse(sides[2], System.Globalization.CultureInfo.InvariantCulture);   
                             }
@@ -222,7 +222,8 @@ class App
 {
      static void Main(string[] args)
     {
-        
+        Console.WriteLine("Hello, I will calculate Perimeter and Area of several geometric figures");
+
         //square calculation
         Shape square = new Square();
         square.GetSides();
