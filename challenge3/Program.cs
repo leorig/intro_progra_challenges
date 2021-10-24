@@ -9,7 +9,7 @@ abstract class Shape//this abstract Shape class is our base class to inherit fro
 
         public abstract double CalculatePerimeter();
 
-        public abstract double GetSides();
+        public abstract void GetSides();
        /*abstract classes may or may not have abstract  functions/fields, in this case we'll make an abstract function called CalculateArea.*/
     }
 //This is a subclass called Square with its own unique characteristics, it inherits from Shape
@@ -41,9 +41,8 @@ abstract class Shape//this abstract Shape class is our base class to inherit fro
             }
             return perimeter;
         }
-        public override double GetSides()
+        public override void GetSides()
         {
-            double readoutput=0;
             string pattern = @"^[Rr]ectangle,";
             Regex rg = new Regex(pattern);
             //creating an object of NumberFormatInfo
@@ -83,8 +82,7 @@ abstract class Shape//this abstract Shape class is our base class to inherit fro
                 // Let the user know what went wrong.
                 Console.WriteLine("The file could not be read:");
                 Console.WriteLine(e.Message);
-            }
-            return readoutput;  
+            } 
         }
     }
 //the same is done for the next classes that inherit from Shape
@@ -111,9 +109,8 @@ abstract class Shape//this abstract Shape class is our base class to inherit fro
             double perimeter = this.tside1+this.tside2+this.tside3;
             return perimeter;
         }
-        public override double GetSides()
+        public override void GetSides()
         {
-            double readoutput=0;
             string pattern = @"^[Tt]riangle,";
             Regex rg = new Regex(pattern);
             //creating an object of NumberFormatInfo
@@ -153,8 +150,7 @@ abstract class Shape//this abstract Shape class is our base class to inherit fro
                 // Let the user know what went wrong.
                 Console.WriteLine("The file could not be read:");
                 Console.WriteLine(e.Message);
-            }
-            return readoutput;  
+            } 
         }
     }
 //Same here, we inherit from 'Shape'
@@ -176,9 +172,8 @@ abstract class Shape//this abstract Shape class is our base class to inherit fro
             double perimeter = Math.PI*2*this.radius;
             return perimeter;
         }
-        public override double GetSides()
+        public override void GetSides()
         {
-            double readoutput=0;
             string pattern = @"^[Cc]ircle,-?\d+(?:\.\d+)?";
             Regex rg = new Regex(pattern);
             //creating an object of NumberFormatInfo
@@ -214,8 +209,7 @@ abstract class Shape//this abstract Shape class is our base class to inherit fro
                 // Let the user know what went wrong.
                 Console.WriteLine("The file could not be read:");
                 Console.WriteLine(e.Message);
-            }
-            return readoutput;  
+            }  
         }
     }
 class App
